@@ -55,8 +55,8 @@ def connexion(request):
 
         if user is not None:
             login(request, user)
-            message = f'Bonjour, {user.username}! Vous etes connecte.'
-            return render(request, 'App/pages/blog.html', {'message':message})
+            posts = Post.objects.all()
+            return render(request, 'App/pages/blog.html', {'posts':posts})
         else:
             message = 'Identifiants Invalides'
             return render(request, 'App/pages/login.html', {'message':message})
